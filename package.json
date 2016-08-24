@@ -1,0 +1,11 @@
+{
+  "name": "webdriverIO",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "3",
+    "mocha": "3",
+    "wdio-mocha-framework": "0",
+    "webdriverio": "4"
+  }
+}

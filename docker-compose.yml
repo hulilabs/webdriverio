@@ -1,0 +1,33 @@
+version: '2'
+services:
+    webdriverio:
+        build: .
+        image: huli/webdriverio
+        depends_on:
+            - chrome
+            - firefox
+        volumes:
+            - ./app:/app
+
+    hub:
+        image: selenium/hub
+        ports:
+            - 4444:4444
+
+    firefox:
+        image: selenium/node-firefox
+        ports:
+            - 5900
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=hub
+        depends_on:
+            - hub
+
+    chrome:
+        image: selenium/node-chrome
+        ports:
+            - 5900
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=hub
+        depends_on:
+            - hub
