@@ -1,6 +1,8 @@
 # Introduction
 Docker image to easily run Selenium tests using [webdriverIO](http://webdriver.io/).
 
+![WebdriverIO](http://webdriver.io/images/webdriverio.png)
+
 # Getting started
 
 ## Requirements
