@@ -50,4 +50,9 @@ docker-compose run --rm webdriverio wdio
 ```
 
 ## Configuration
-This image comes with [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) installed, but you could easily build your own with another testing framework based on this image.
+This image comes with the following packages preinstalled:
+- [Mocha](https://mochajs.org/)
+- [Chai](http://chaijs.com/)
+- [Sinon](http://sinonjs.org/)
+- [Jasmine](http://jasmine.github.io/)
+- [Cucumber](https://cucumber.io/)

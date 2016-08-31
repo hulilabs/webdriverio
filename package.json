@@ -4,7 +4,10 @@
   "license": "MIT",
   "dependencies": {
     "chai": "3",
+    "cucumber": "1",
+    "jasmine-core": "2",
     "mocha": "3",
+    "sinon": "1",
     "wdio-mocha-framework": "0",
     "webdriverio": "4"
   }
