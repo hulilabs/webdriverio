@@ -19,6 +19,10 @@ services:
         depends_on:
             - chrome
             - firefox
+            - hub
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=hub
+            - HUB_PORT_4444_TCP_PORT=4444
         volumes:
             - {{replace_with_path_of_wdio.conf.js_file}}:/app
 
@@ -33,6 +37,7 @@ services:
             - 5900
         environment:
             - HUB_PORT_4444_TCP_ADDR=hub
+            - HUB_PORT_4444_TCP_PORT=4444
         depends_on:
             - hub
 
@@ -42,6 +47,7 @@ services:
             - 5900
         environment:
             - HUB_PORT_4444_TCP_ADDR=hub
+            - HUB_PORT_4444_TCP_PORT=4444
         depends_on:
             - hub
 ```
@@ -58,3 +64,12 @@ This image comes with the following packages preinstalled:
 - [Sinon](http://sinonjs.org/)
 - [Jasmine](http://jasmine.github.io/)
 - [Cucumber](https://cucumber.io/)
+
+## Troubleshooting
+
+**ERROR: Error forwarding the new session Empty pool of VM for setup Capabilities**
+
+Sometimes the browsers might not have enough time to connect to the hub. You can either:
+1. Make it in two steps: first run `docker-compose up -d chrome firefox hub` then `docker-compose run --rm webdriverio wdio`
+2. Or you can add a sleep time to make sure the hub is ready: `docker-compose run --rm webdriverio bash -c "sleep 10 && wdio"`.
+
