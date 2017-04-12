@@ -11,9 +11,9 @@ Docker image to easily run Selenium tests using [webdriverIO](http://webdriver.i
 ## Usage
 To use this image to run your app tests you can add the following to a `docker-compose.yml` file:
 
-[basic version](webdriverio/basiccompose.txt)
+[basic version](basiccompose.txt)
 or 
-[vnc version](webdriverio/vnccompose.txt)
+[vnc version](vnccompose.txt)
 
 Then simply run:
 ```
