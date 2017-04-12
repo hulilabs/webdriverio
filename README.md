@@ -11,46 +11,9 @@ Docker image to easily run Selenium tests using [webdriverIO](http://webdriver.i
 ## Usage
 To use this image to run your app tests you can add the following to a `docker-compose.yml` file:
 
-```
-version: '2'
-services:
-    webdriverio:
-        image: huli/webdriverio:latest
-        depends_on:
-            - chrome
-            - firefox
-            - hub
-        environment:
-            - HUB_PORT_4444_TCP_ADDR=hub
-            - HUB_PORT_4444_TCP_PORT=4444
-        volumes:
-            - {{replace_with_path_of_wdio.conf.js_file}}:/app
-
-    hub:
-        image: selenium/hub
-        ports:
-            - 4444:4444
-
-    firefox:
-        image: selenium/node-firefox
-        ports:
-            - 5900
-        environment:
-            - HUB_PORT_4444_TCP_ADDR=hub
-            - HUB_PORT_4444_TCP_PORT=4444
-        depends_on:
-            - hub
-
-    chrome:
-        image: selenium/node-chrome
-        ports:
-            - 5900
-        environment:
-            - HUB_PORT_4444_TCP_ADDR=hub
-            - HUB_PORT_4444_TCP_PORT=4444
-        depends_on:
-            - hub
-```
+[basic version](webdriverio/basiccompose.txt)
+or 
+[vnc version](webdriverio/vnccompose.txt)
 
 Then simply run:
 ```
