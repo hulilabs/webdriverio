@@ -15,6 +15,13 @@ To use this image to run your app tests you can add the following to a `docker-c
 or 
 [vnc version](vnccompose.txt)
 
+https://www.realvnc.com/download/viewer/linux/
+
+pass : secret
+IP - to be determined, now they are:
+0.0.0.0:32803
+0.0.0.0:32802
+
 Then simply run:
 ```
 docker-compose run --rm webdriverio wdio
