@@ -72,4 +72,6 @@ This image comes with the following packages preinstalled:
 Sometimes the browsers might not have enough time to connect to the hub. You can either:
 1. Make it in two steps: first run `docker-compose up -d chrome firefox hub` then `docker-compose run --rm webdriverio wdio`
 2. Or you can add a sleep time to make sure the hub is ready: `docker-compose run --rm webdriverio bash -c "sleep 10 && wdio"`.
+3. Command 'docker logs containername' will tell you if you have any issues with your grid.
+4. Remove old versions of selenium dockers (it was messing with my installation).
 
