@@ -1,4 +1,4 @@
-Put :
+if you want to use mocha/chai put :
 ```
 Add 
     before: function() {
@@ -7,10 +7,10 @@ Add
         chai.Should();
     },
 ```
-into your wdio.conf.js if you want to use mocha/chai.
+into your wdio.conf.js 
 
 
-Put:
+If you want better reporters:
 ```
     reporters: ['dot','spec','junit','json'],
     reporterOptions: {
