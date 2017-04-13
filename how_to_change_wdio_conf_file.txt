@@ -1,0 +1,19 @@
+Put :
+```
+Add 
+    before: function() {
+        var chai = require('chai');
+        global.expect = chai.expect;
+        chai.Should();
+    },
+```
+into your wdio.conf.js if you want to use mocha/chai.
+
+
+Put:
+```
+    reporters: ['dot','spec','junit','json'],
+    reporterOptions: {
+    outputDir: './reports'
+    },
+```
