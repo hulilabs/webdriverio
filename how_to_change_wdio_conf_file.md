@@ -10,10 +10,11 @@ Add
 into your wdio.conf.js 
 
 
-If you want better reporters:
+If you want to use better reporters put:
 ```
     reporters: ['dot','spec','junit','json'],
     reporterOptions: {
     outputDir: './reports'
     },
 ```
+into your wdio.conf.js 
