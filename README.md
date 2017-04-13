@@ -18,7 +18,8 @@ Add
         chai.Should();
     },
 ```
-into your wdio.conf.js if you want to use mocha/chai
+into your wdio.conf.js if you want to use mocha/chai.
+Use "dot" version of reporter (others are not installed, at least for now). 
 
 To use this image to run your app tests you can add the following to a `docker-compose.yml` file:
 
