@@ -12,7 +12,7 @@ Docker image to easily run Selenium tests using [webdriverIO](http://webdriver.i
 Best way to start is clone this repository, go to app/test/specs - you will put your tests there.
 
 Modify your wdio.conf.js file according to this:
-[fix your wdio](how_to_change_wdio_conf_file.txt)
+[fix your wdio](how_to_change_wdio_conf_file.md)
 
 Use "dot" version of reporter (others are not installed, at least for now). 
 
