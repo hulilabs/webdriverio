@@ -18,3 +18,5 @@ If you want to use better reporters put:
     },
 ```
 into your wdio.conf.js 
+
+Your test reports will be written to ./reports (next to tests). 
