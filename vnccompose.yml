@@ -1,7 +1,7 @@
 version: '2'
 services:
     webdriverio:
-        image: TU MUSI BYC AKTUALNY OBRAZ WEBDRIVERIO - BUDOWANY AUTOMATYCZNIE!!!!
+        image: huli/webdriverio:latest
         depends_on:
             - chrome
             - firefox
