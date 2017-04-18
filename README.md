@@ -11,13 +11,10 @@ Docker image to easily run Selenium tests using [webdriverIO](http://webdriver.i
 ## Usage
 Best way to start is clone this repository, go to app/test/specs - you will put your tests there.
 
-Add 
-    before: function() {
-        var chai = require('chai');
-        global.expect = chai.expect;
-        chai.Should();
-    },
-into your wdio.conf.js if you want to use mocha/chai
+Modify your wdio.conf.js file according to this:
+[fix your wdio](how_to_change_wdio_conf_file.md)
+
+Use "dot" version of reporter (others are not installed, at least for now). 
 
 To use this image to run your app tests you can add the following to a `docker-compose.yml` file:
 

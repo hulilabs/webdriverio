@@ -1,11 +1,14 @@
 version: '2'
 services:
     webdriverio:
-        build: .
-        image: huli/webdriverio
+        image: TU MUSI BYC AKTUALNY OBRAZ WEBDRIVERIO - BUDOWANY AUTOMATYCZNIE!!!!
         depends_on:
             - chrome
             - firefox
+            - hub
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=hub
+            - HUB_PORT_4444_TCP_PORT=4444
         volumes:
             - ./app:/app
 
@@ -15,19 +18,21 @@ services:
             - 4444:4444
 
     firefox:
-        image: selenium/node-firefox
+        image: selenium/node-firefox-debug
         ports:
             - 5900
         environment:
             - HUB_PORT_4444_TCP_ADDR=hub
+            - HUB_PORT_4444_TCP_PORT=4444
         depends_on:
             - hub
 
     chrome:
-        image: selenium/node-chrome
+        image: selenium/node-chrome-debug
         ports:
             - 5900
         environment:
             - HUB_PORT_4444_TCP_ADDR=hub
+            - HUB_PORT_4444_TCP_PORT=4444
         depends_on:
             - hub
