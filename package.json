@@ -18,7 +18,7 @@
     "wdio-junit-reporter": "0.3.0",
     "wdio-simple-reporter": "0.1.2",
     "wdio-junit-reporter": "0.0.1",
-    "wdio-json-reporter": "0.1.0"
-    "wdio-phantomjs-service": "0.2.2",
+    "wdio-json-reporter": "0.1.0",
+    "wdio-phantomjs-service": "0.2.2"
   }
 }
