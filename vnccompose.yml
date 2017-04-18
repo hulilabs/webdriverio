@@ -1,7 +1,7 @@
 version: '2'
 services:
     webdriverio:
-        image: huli/webdriverio:latest
+        image: parhelium/webdriverio:latest
         depends_on:
             - chrome
             - firefox
