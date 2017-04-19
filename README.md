@@ -18,9 +18,9 @@ Use "dot" version of reporter (others are not installed, at least for now).
 
 To use this image to run your app tests you can add the following to a `docker-compose.yml` file:
 
-[basic version](basiccompose.md)
+[basic version](basiccompose.yml)
 or 
-[vnc version](vnccompose.md)
+[vnc version](vnccompose.yml)
 
 https://www.realvnc.com/download/viewer/linux/
 
