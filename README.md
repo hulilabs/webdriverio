@@ -14,7 +14,7 @@ Best way to start is clone this repository, go to app/test/specs - you will put 
 Modify your wdio.conf.js file according to this:
 [fix your wdio](how_to_change_wdio_conf_file.md)
 
-Use "dot" version of reporter (others are not installed, at least for now). 
+You can use multiple reporters
 
 To use this image to run your app tests you can add the following to a `docker-compose.yml` file:
 
