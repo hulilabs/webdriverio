@@ -1,4 +1,4 @@
-FROM node:6
+FROM node:8
 
 ENV NODE_PATH /install/node_modules/
 ENV PATH /install/node_modules/.bin:$PATH
