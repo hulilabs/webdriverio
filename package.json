@@ -12,7 +12,6 @@
     "wdio-spec-reporter": "0",
     "webdriverio": "4",
     "css-to-xpath": "0",
-    "icu-loader": "2",
     "wdio-allure-reporter": "0"
   }
 }
