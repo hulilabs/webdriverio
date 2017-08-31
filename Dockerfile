@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:8-alpine
 
 ENV NODE_PATH /install/node_modules/
 ENV PATH /install/node_modules/.bin:$PATH
@@ -6,15 +6,58 @@ ENV PATH /install/node_modules/.bin:$PATH
 COPY package.json /install/package.json
 WORKDIR /install/
 
-RUN npm install && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-    echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list && \
-    echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list && \
-    apt-get update && apt-get install software-properties-common -y --no-install-recommends && apt-get install -y --no-install-recommends build-essential && \
-    apt-get install -y --no-install-recommends python python-pip libssl-dev groff-base python-dev libyaml-dev && \
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886 && apt-get update && apt-get install oracle-java8-installer -y --no-install-recommends && \
-    pip install pyyaml awscli && npm install -g allure-commandline && rm -rf /var/lib/apt/lists/* && npm cache clean --force && apt-get autoremove
+# if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
+# installs python and java first, as it is required for some node packages
+ENV PYTHON_PIP_VERSION 9.0.1
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+RUN { \
+		echo '#!/bin/sh'; \
+		echo 'set -e'; \
+		echo; \
+		echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
+	} > /usr/local/bin/docker-java-home \
+	&& chmod +x /usr/local/bin/docker-java-home 
+
+RUN apk --no-cache add --virtual native-deps \
+  g++ gcc libgcc libstdc++ linux-headers make python && \
+  npm install --quiet node-gyp -g &&\
+  npm install --quiet && \
+  apk del native-deps
+
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
+ENV JAVA_VERSION 8u131
+ENV JAVA_ALPINE_VERSION 8.131.11-r2
+
+RUN set -x \
+	&& apk add --no-cache python \
+		openjdk8="$JAVA_ALPINE_VERSION" \
+	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
+
+RUN set -ex; \
+	\
+	apk add --no-cache --virtual .fetch-deps openssl; \
+	\
+	wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py'; \
+	\
+	apk del .fetch-deps; \
+	\
+	python get-pip.py \
+		--disable-pip-version-check \
+		--no-cache-dir \
+		"pip==$PYTHON_PIP_VERSION" \
+	; \
+	pip --version; \
+	\
+	find /usr/local -depth \
+		\( \
+			\( -type d -a \( -name test -o -name tests \) \) \
+			-o \
+			\( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
+		\) -exec rm -rf '{}' +; \
+	rm -f get-pip.py; \
+    pip install pyyaml awscli --no-cache-dir; \
+    npm install; 
 
 VOLUME /app
 WORKDIR /app
