@@ -6,6 +6,7 @@
     "chai": "3",
     "cucumber": "1",
     "jasmine-core": "2",
+    "jest-matchers": "20",
     "mocha": "3",
     "sinon": "1",
     "wdio-mocha-framework": "0",
